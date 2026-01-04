@@ -1,0 +1,29 @@
+{
+    "name": "insaat-tech",
+    "type": "module",
+    "version": "0.0.1",
+    "scripts": {
+        "dev": "astro dev --host",
+        "start": "astro dev --host",
+        "build": "astro build",
+        "preview": "astro preview",
+        "astro": "astro"
+    },
+    "dependencies": {
+        "@astrojs/react": "latest",
+        "@astrojs/sitemap": "^3.6.0",
+        "astro": "latest",
+        "clsx": "latest",
+        "framer-motion": "latest",
+        "react": "latest",
+        "react-dom": "latest",
+        "tailwind-merge": "latest"
+    },
+    "devDependencies": {
+        "@astrojs/tailwind": "latest",
+        "@types/react": "latest",
+        "@types/react-dom": "latest",
+        "tailwindcss": "latest",
+        "typescript": "latest"
+    }
+}

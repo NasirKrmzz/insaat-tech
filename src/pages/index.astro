@@ -1,0 +1,43 @@
+---
+import Layout from '../layouts/Layout.astro';
+import { Hero } from '../components/Hero';
+import { Features } from '../components/Features';
+import { Projects } from '../components/Projects';
+import { HomeContact } from '../components/HomeContact';
+import Footer from '../components/Footer.astro';
+
+const serviceAreas = [
+    "Nilüfer Balkan Mh. Tadilat",
+    "Kayapa Konut Projeleri",
+    "Mudanya Villa Peyzaj",
+    "Özlüce Ofis Dekorasyon",
+    "Bademli Havuz Yapımı",
+    "Görükle Komple Tadilat",
+    "Bursa Çelik Konstrüksiyon",
+    "Balat Akıllı Ev Sistemleri"
+];
+---
+
+<Layout 
+    title="İnsaat Tech | Bursa'nın Yeni Nesil Yapı Çözümleri"
+    description="Bursa'da ev tadilatı, banyo yenileme, mutfak dekorasyonu ve ofis inşaat işleri. Ücretsiz keşif ve profesyonel ekiple anahtar teslim çözümler."
+>
+	<main class="min-h-screen">
+		
+        <!-- React Hero Component (Client Load for Animation) -->
+        <Hero client:load />
+
+        <!-- Static Features Section -->
+        <Features client:load />
+
+        <Projects client:visible />
+
+        <!-- Contact / Footer Section -->
+        <div id="contact">
+            <HomeContact client:load />
+        </div>
+        
+        <Footer /> 
+
+	</main>
+</Layout>

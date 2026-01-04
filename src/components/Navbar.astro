@@ -1,0 +1,141 @@
+---
+import videoSrc from '../assets/video/Tadilat1.webm';
+
+const pathname = Astro.url.pathname;
+const isHome = pathname === '/';
+
+// Dynamic Styling based on page
+const textColor = isHome ? 'text-white' : 'text-stone-900';
+const subTextColor = isHome ? 'text-white/50' : 'text-stone-900/50';
+const hoverTextColor = isHome ? 'group-hover:text-white' : 'group-hover:text-stone-900';
+const logoBg = isHome ? 'bg-white/10 border-white/20 text-white hover:bg-white hover:text-stone-950' : 'bg-stone-900/5 text-stone-900 border-stone-900/10 hover:bg-stone-900 hover:text-white';
+const navBorder = isHome ? 'border-white/10' : 'border-stone-900/10';
+const menuBtnBg = isHome ? 'bg-white/10 hover:bg-white hover:text-black text-white' : 'bg-stone-900/5 hover:bg-stone-900 hover:text-white text-stone-900';
+---
+<nav id="main-nav" data-is-home={isHome} class="fixed top-0 left-0 w-full z-50 transition-all duration-300">
+    <div class="max-w-screen-xl mx-auto flex justify-between items-center h-20 px-4 md:px-6">
+        
+        <!-- Logo / Home Link -->
+        <a href="/" class="flex items-center gap-2 group shrink-0">
+            <div class={`backdrop-blur-md border font-display font-bold text-lg px-2 py-1 tracking-tighter transition-colors ${logoBg}`}>
+                İNSAAT
+            </div>
+            <span class={`font-mono text-xs tracking-widest transition-colors ${subTextColor} ${hoverTextColor}`}>YAPI</span>
+        </a>
+
+        <!-- Desktop/Tablet Nav Items -->
+        <div class="flex items-stretch h-full">
+            {isHome && (
+                <>
+                    <a href="/projects" class={`flex items-center px-4 md:px-6 border-l hover:bg-white/5 transition-colors group h-full ${navBorder}`}>
+                        <span class={`text-[10px] font-mono uppercase tracking-wider text-white/70 group-hover:text-white`}>PROJELER</span>
+                    </a>
+
+                    <a href="/services" class={`flex items-center px-4 md:px-6 border-l hover:bg-white/5 transition-colors group h-full ${navBorder}`}>
+                        <span class={`text-[10px] font-mono uppercase tracking-wider text-white/70 group-hover:text-white`}>HİZMETLER</span>
+                    </a>
+                </>
+            )}
+
+            <!-- Main Action (Hamburger) -->
+            <button id="menu-toggle" class={`flex items-center justify-center gap-2 px-4 md:px-8 backdrop-blur-md transition-colors group h-full border-l cursor-pointer ${navBorder} ${menuBtnBg}`}>
+                <span class="hidden md:block font-mono text-[10px] uppercase tracking-wider mr-2">MENÜ</span>
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="square" stroke-linejoin="miter">
+                    <line x1="3" y1="12" x2="21" y2="12"></line>
+                    <line x1="3" y1="6" x2="21" y2="6"></line>
+                    <line x1="3" y1="18" x2="21" y2="18"></line>
+                </svg>
+            </button>
+        </div>
+
+    </div>
+</nav>
+
+<!-- Full Screen Menu Overlay -->
+<div id="menu-overlay" class="fixed inset-0 bg-stone-950/90 backdrop-blur-xl z-[60] translate-x-full transition-transform duration-500 flex flex-col justify-center items-center overflow-hidden">
+    
+    <!-- Menu Video Background -->
+    <div class="absolute inset-0 z-[-1] opacity-40">
+        <video
+            autoplay
+            loop
+            muted
+            playsinline
+            class="w-full h-full object-cover">
+            <source src={videoSrc} type="video/webm" />
+        </video>
+        <div class="absolute inset-0 bg-black/70"></div>
+    </div>
+
+    <button id="menu-close" class="absolute top-6 right-6 text-white hover:text-primary transition-colors z-50">
+        <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="square" stroke-linejoin="miter">
+            <line x1="18" y1="6" x2="6" y2="18"></line>
+            <line x1="6" y1="6" x2="18" y2="18"></line>
+        </svg>
+    </button>
+
+    <div class="flex flex-col gap-8 text-center relative z-10">
+        <a href="/" class="menu-link text-4xl md:text-6xl font-display font-black text-white hover:text-primary transition-colors">ANA SAYFA</a>
+        <a href="/projects" class="menu-link text-4xl md:text-6xl font-display font-black text-white hover:text-primary transition-colors">PROJELERİMİZ</a>
+        <a href="/services" class="menu-link text-4xl md:text-6xl font-display font-black text-white hover:text-primary transition-colors">HİZMETLER</a>
+        <a href="/calculator" class="menu-link text-4xl md:text-6xl font-display font-black text-white hover:text-primary transition-colors">MALİYET HESAPLA</a>
+    </div>
+</div>
+
+<script>
+    // Scroll Logic
+    let lastScrollY = window.scrollY;
+    const nav = document.getElementById('main-nav');
+    const isHome = nav?.getAttribute('data-is-home') === 'true';
+
+    window.addEventListener('scroll', () => {
+        if (!nav) return;
+        
+        const currentScrollY = window.scrollY;
+        
+        // Smart Hide/Show Logic
+        if (currentScrollY > lastScrollY && currentScrollY > 50) {
+            nav.classList.add('-translate-y-full');
+        } else {
+            nav.classList.remove('-translate-y-full');
+        }
+
+        // Background Logic
+        if (currentScrollY > 50) {
+            if (isHome) {
+                // Home: Dark glass on scroll
+                nav.classList.add('bg-stone-950/90', 'backdrop-blur-md', 'border-b', 'border-white/10');
+            } else {
+                // Others: White glass on scroll (Light theme)
+                nav.classList.add('bg-white/90', 'backdrop-blur-md', 'border-b', 'border-stone-200/50');
+            }
+        } else {
+            // Top: Transparent
+            if (isHome) {
+                nav.classList.remove('bg-stone-950/90', 'backdrop-blur-md', 'border-b', 'border-white/10');
+            } else {
+                nav.classList.remove('bg-white/90', 'backdrop-blur-md', 'border-b', 'border-stone-200/50');
+            }
+        }
+
+        lastScrollY = currentScrollY;
+    });
+
+    // Menu Logic
+    const menuToggle = document.getElementById('menu-toggle');
+    const menuClose = document.getElementById('menu-close');
+    const menuOverlay = document.getElementById('menu-overlay');
+    const menuLinks = document.querySelectorAll('.menu-link');
+
+    function toggleMenu() {
+        menuOverlay?.classList.toggle('translate-x-full');
+        document.body.classList.toggle('overflow-hidden');
+    }
+
+    menuToggle?.addEventListener('click', toggleMenu);
+    menuClose?.addEventListener('click', toggleMenu);
+    
+    menuLinks.forEach(link => {
+        link.addEventListener('click', toggleMenu);
+    });
+</script>
