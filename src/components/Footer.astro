@@ -14,8 +14,9 @@ const { simple = false } = Astro.props;
             
             {/* Brand & Tagline - Compact */}
             <div class="text-center md:text-left">
-                <a href="/" class="block text-xl font-display font-black text-stone-900 tracking-tighter mb-1">
-                    İNŞAAT<span class="text-primary">.</span>
+                <a href="/" class="block group mb-3">
+                    <span class="block text-xl font-display font-black text-red-600 tracking-tighter leading-none mb-0.5">KIRMIZI</span>
+                    <span class="block text-lg font-display font-black text-stone-900 tracking-tighter leading-none">İNŞAAT</span>
                 </a>
                 <p class="text-stone-500 text-xs">
                     Bursa'nın yeni nesil yapı çözümleri.
@@ -46,11 +47,11 @@ const { simple = false } = Astro.props;
 
         {/* Minimal Copyright Line - Conditionally Rendered */}
         {!simple && (
-            <div class="mt-8 pt-6 border-t border-stone-200 text-center md:text-left flex flex-col md:flex-row justify-between items-center text-[10px] text-stone-400 uppercase tracking-widest">
+            <div class="mt-8 pt-6 border-t border-stone-200 flex flex-col items-center text-[10px] text-stone-400 uppercase tracking-widest gap-2">
                 <div>
-                    &copy; {currentYear} İNŞAAT TECH
+                    &copy; 2026 KIRMIZI İNŞAAT
                 </div>
-                <div class="mt-2 md:mt-0">
+                <div>
                     TASARLAYAN NASIR KIRMIZI 
                 </div>
             </div>

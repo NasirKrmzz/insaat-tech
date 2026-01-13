@@ -12,6 +12,10 @@
     "dependencies": {
         "@astrojs/react": "latest",
         "@astrojs/sitemap": "^3.6.0",
+        "@astrojs/vercel": "^9.0.3",
+        "@fontsource/jetbrains-mono": "^5.2.8",
+        "@fontsource/manrope": "^5.2.8",
+        "@fontsource/unbounded": "^5.2.8",
         "astro": "latest",
         "clsx": "latest",
         "framer-motion": "latest",

@@ -1,6 +1,18 @@
 ---
 import Navbar from '../components/Navbar.astro';
 
+import '@fontsource/manrope/400.css';
+import '@fontsource/manrope/500.css';
+import '@fontsource/manrope/700.css';
+import '@fontsource/manrope/800.css';
+import '@fontsource/unbounded/400.css';
+import '@fontsource/unbounded/500.css';
+import '@fontsource/unbounded/700.css';
+import '@fontsource/unbounded/900.css';
+import '@fontsource/jetbrains-mono/400.css';
+import '@fontsource/jetbrains-mono/500.css';
+import '@fontsource/jetbrains-mono/700.css';
+
 interface Props {
 	title: string;
 	description?: string;
@@ -77,11 +89,6 @@ const schema = {
 
         <!-- JSON-LD Structured Data -->
         <script type="application/ld+json" set:html={JSON.stringify(schema)} />
-        
-        <!-- Google Fonts: Unbounded (Display), Manrope (Body), JetBrains Mono (Technical) -->
-        <link rel="preconnect" href="https://fonts.googleapis.com">
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-        <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&family=Manrope:wght@400;500;700;800&family=Unbounded:wght@400;500;700;900&display=swap" rel="stylesheet">
 	<body class="bg-stone-50 text-stone-900 font-sans antialiased relative min-h-screen selection:bg-primary selection:text-white">
         
         <!-- Top Navigation Bar -->
