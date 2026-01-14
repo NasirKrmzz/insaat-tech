@@ -8,7 +8,7 @@ import vercel from '@astrojs/vercel';
 // https://astro.build/config
 export default defineConfig({
   // TODO: Domain aldığınızda güncelleyin
-  site: 'https://bursa-insaat-tadilat.com',
+  site: 'https://tadilatbursa.com.tr',
 
   integrations: [react(), tailwind(), sitemap()],
   adapter: vercel(),
