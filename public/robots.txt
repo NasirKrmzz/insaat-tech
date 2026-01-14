@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://bursa-insaat-tadilat.com/sitemap-index.xml
+Sitemap: https://tadilatbursa.com.tr/sitemap-index.xml
